@@ -1,5 +1,7 @@
 package br.com.cronos.msauthors.domain.dto.request;
 
+import br.com.cronos.msauthors.domain.annotations.UniqueValue;
+import br.com.cronos.msauthors.domain.entity.Author;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -13,6 +15,7 @@ public class CreateAuthorRequestDTO {
     private String name;
     @NotNull
     @Email
+    @UniqueValue(domainClass =  Author.class, fieldName = "email")
     private String email;
     @NotNull
     @Length(min = 2, max = 400)
